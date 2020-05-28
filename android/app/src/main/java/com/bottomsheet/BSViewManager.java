@@ -3,14 +3,17 @@ package com.bottomsheet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.facebook.react.uimanager.ViewGroupManager;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.facebook.react.uimanager.ThemedReactContext;
+import com.facebook.react.uimanager.ViewGroupManager;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-public class BSViewManager extends ViewGroupManager<LinearLayout> {
+public class BSViewManager extends ViewGroupManager<CoordinatorLayout> {
 
     private final static String REACT_CLASS = "BSBCoordinatorLayoutAndroid";
     private ThemedReactContext context;
+    private CoordinatorLayout bottomsheet;
+    private CoordinatorLayout container;
 
     @Override
     public String getName() {
@@ -18,16 +21,26 @@ public class BSViewManager extends ViewGroupManager<LinearLayout> {
     }
 
     @Override
-    public LinearLayout createViewInstance(ThemedReactContext context) {
+    public CoordinatorLayout createViewInstance(ThemedReactContext context) {
         this.context = context;
-         return (LinearLayout) context.getCurrentActivity().getLayoutInflater().inflate(R.layout.bottom_sheet_layout, null);
+        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) context.getCurrentActivity().getLayoutInflater().inflate(R.layout.bottom_sheet_layout, null);
+        bottomsheet = coordinatorLayout.findViewById(R.id.bottomSheet);
+        container = coordinatorLayout.findViewById(R.id.container);
+        return coordinatorLayout;
 
     }
 
     @Override
-    public void addView(LinearLayout parent, View child, int index) {
-        BottomSheetDialog mBottomSheetDialog = new BottomSheetDialog(context);
-        mBottomSheetDialog.setContentView(child);
-        mBottomSheetDialog.show();
+    public void addView(CoordinatorLayout parent, View child, int index) {
+        if (container.getChildCount() + bottomsheet.getChildCount() > 1) {
+            container.removeAllViews();
+            bottomsheet.removeAllViews();
+        }
+        if(index ==  0) {
+            container.addView(child);
+        } else {
+            bottomsheet.addView(child);
+        }
+
     }
 }
