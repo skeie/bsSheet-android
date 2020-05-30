@@ -17,6 +17,11 @@ import {
   Text,
   StatusBar,
   TouchableOpacity,
+  TouchableNativeFeedback,
+  TouchableHighlight,
+  Switch,
+  TextInput,
+  Keyboard,
 } from 'react-native';
 
 import {
@@ -27,10 +32,12 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import BottomSheet from './BsSheet';
+import Button from './Button';
 
 declare const global: {HermesInternal: null | {}};
 
 const App = () => {
+  const [on, toggle] = React.useState(false);
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -81,26 +88,16 @@ const App = () => {
               height: 500,
               backgroundColor: 'red',
             }}>
-            <TouchableOpacity
-              onPressIn={() => {
-                console.log('sapdap');
-              }}
-              onPressOut={() => {
-                console.log('sapdap');
-              }}
-              onLongPress={() => {
-                console.log('sapdap');
-              }}
-              onPress={() => {
-                console.log('sapdap');
-              }}>
-              <Text
-                onPress={() => {
-                  console.log('sapdap 2');
-                }}>
-                TOUCH ME!
-              </Text>
-            </TouchableOpacity>
+            <Switch value={on} onValueChange={toggle} />
+            <TextInput
+              autoFocus
+              style={{height: 50}}
+              placeholder="This is a text input"
+              onChangeText={() => {}}
+            />
+            <Button>
+              <Text>sapdap</Text>
+            </Button>
           </View>
         </BottomSheet>
       </SafeAreaView>
