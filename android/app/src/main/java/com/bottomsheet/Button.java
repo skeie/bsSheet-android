@@ -10,20 +10,13 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 
-public class Test extends LinearLayout {
-    private final LinearLayout buttonContainer;
+public class Button extends LinearLayout {
 
-    public Test(ThemedReactContext context) {
+    private final ThemedReactContext context;
+
+    public Button(ThemedReactContext context) {
         super(context);
-        LinearLayout layout = (LinearLayout) context.getCurrentActivity().getLayoutInflater().inflate(R.layout.button, null);
-        buttonContainer = layout.findViewById(R.id.buttonContent);
-        System.out.println("hva faen sapdap" + buttonContainer);
-        buttonContainer.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("sapdap");
-            }
-        });
+        this.context = context;
     }
 
     public void onReceiveNativeEvent() {
@@ -37,7 +30,16 @@ public class Test extends LinearLayout {
 
     @Override
     public void addView(View child) {
-        System.out.println(child.getId() + " neivel sapdap ");
-        buttonContainer.addView(child);
+        super.addView(child);
+        child.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("sapdap");
+                context.getJSModule(RCTEventEmitter.class)
+                        .receiveEvent(getId(),
+                                "onClick", null);
+
+            }
+        });
     }
 }

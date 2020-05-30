@@ -26,6 +26,7 @@ public class BSViewManager extends ViewGroupManager<LinearLayout> {
 
     @Override
     public void addView(LinearLayout parent, View child, int index) {
+        System.out.println("sapdap her");
         BottomSheetDialog mBottomSheetDialog = new BottomSheetDialog(context);
         mBottomSheetDialog.setContentView(child);
         mBottomSheetDialog.show();

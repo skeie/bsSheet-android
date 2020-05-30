@@ -88,6 +88,9 @@ const App = () => {
               height: 500,
               backgroundColor: 'red',
             }}>
+            <Button>
+              <Text>sapdap</Text>
+            </Button>
             <Switch value={on} onValueChange={toggle} />
             <TextInput
               autoFocus
