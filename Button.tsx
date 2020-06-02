@@ -3,6 +3,7 @@ import {
   requireNativeComponent,
   NativeEventEmitter,
   NativeModules,
+  TouchableOpacity,
 } from 'react-native';
 
 export type BottomSheetState = 'collapsed' | 'expanded';
@@ -24,13 +25,14 @@ const BottomSheet = ({children}: Props) => {
     console.log('sapdap migc');
   }
 
-  React.useEffect(() => {
-    eventEmitter.addListener('sapdap', () => {
-      console.log('sapdap sap i listner');
-    });
-  });
-
-  return <Button children={children} onClick={onClick} />;
+  return (
+    <TouchableOpacity
+      onPress={() => {
+        console.log('sapdap js side touch');
+      }}>
+      <Button children={children} onClick={onClick} />
+    </TouchableOpacity>
+  );
 };
 const Button = requireNativeComponent('AndroidButton');
 

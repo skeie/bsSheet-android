@@ -52,6 +52,9 @@ const App = () => {
             </View>
           )}
           <View style={styles.body}>
+            <Button>
+              <Text>Outside</Text>
+            </Button>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>

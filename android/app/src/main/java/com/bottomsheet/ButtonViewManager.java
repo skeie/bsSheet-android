@@ -15,10 +15,6 @@ import java.util.Map;
 public class ButtonViewManager extends ViewGroupManager<Button> {
 
     private final static String REACT_CLASS = "AndroidButton";
-    private ThemedReactContext context;
-    private LinearLayout buttonContainer;
-    private String buttonId;
-    private int id;
 
     @Override
     public String getName() {
@@ -50,6 +46,10 @@ public class ButtonViewManager extends ViewGroupManager<Button> {
 
     @Override
     public void addView(Button parent, View child, int index) {
+        if (parent.getChildCount() > 1) {
+            parent.removeAllViews();
+        }
+
         parent.addView(child);
     }
 

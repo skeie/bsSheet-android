@@ -34,11 +34,12 @@ public class Button extends LinearLayout {
         child.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("sapdap");
-                context.getJSModule(RCTEventEmitter.class)
-                        .receiveEvent(getId(),
-                                "onClick", null);
+                if (BSViewManager.isBSOpen()) {
+                    context.getJSModule(RCTEventEmitter.class)
+                            .receiveEvent(getId(),
+                                    "onClick", null);
 
+                }
             }
         });
     }
