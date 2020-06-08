@@ -88,9 +88,41 @@ const App = () => {
             style={{
               justifyContent: 'center',
               alignItems: 'center',
-              height: 500,
               backgroundColor: 'red',
+              position: 'absolute',
             }}>
+            <ScrollView>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Scrollview element</Text>
+                <Text style={styles.sectionDescription}>
+                  This is elements in the scroll view
+                </Text>
+              </View>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Scrollview element</Text>
+                <Text style={styles.sectionDescription}>
+                  This is elements in the scroll view
+                </Text>
+              </View>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Scrollview element</Text>
+                <Text style={styles.sectionDescription}>
+                  This is elements in the scroll view
+                </Text>
+              </View>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Scrollview element</Text>
+                <Text style={styles.sectionDescription}>
+                  This is elements in the scroll view
+                </Text>
+              </View>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Scrollview element</Text>
+                <Text style={styles.sectionDescription}>
+                  This is elements in the scroll view
+                </Text>
+              </View>
+            </ScrollView>
             <Button>
               <Text>sapdap</Text>
             </Button>
