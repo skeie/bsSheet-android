@@ -17,6 +17,11 @@ import {
   Text,
   StatusBar,
   TouchableOpacity,
+  TouchableNativeFeedback,
+  TouchableHighlight,
+  Switch,
+  TextInput,
+  Keyboard,
 } from 'react-native';
 
 import {
@@ -27,10 +32,12 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import BottomSheet from './BsSheet';
+import Button from './Button';
 
 declare const global: {HermesInternal: null | {}};
 
 const App = () => {
+  const [on, toggle] = React.useState(false);
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -45,6 +52,9 @@ const App = () => {
             </View>
           )}
           <View style={styles.body}>
+            <Button>
+              <Text>Outside</Text>
+            </Button>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>
@@ -78,29 +88,54 @@ const App = () => {
             style={{
               justifyContent: 'center',
               alignItems: 'center',
-              height: 500,
               backgroundColor: 'red',
+              position: 'absolute',
             }}>
-            <TouchableOpacity
-              onPressIn={() => {
-                console.log('sapdap');
-              }}
-              onPressOut={() => {
-                console.log('sapdap');
-              }}
-              onLongPress={() => {
-                console.log('sapdap');
-              }}
-              onPress={() => {
-                console.log('sapdap');
-              }}>
-              <Text
-                onPress={() => {
-                  console.log('sapdap 2');
-                }}>
-                TOUCH ME!
-              </Text>
-            </TouchableOpacity>
+            <ScrollView>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Scrollview element</Text>
+                <Text style={styles.sectionDescription}>
+                  This is elements in the scroll view
+                </Text>
+              </View>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Scrollview element</Text>
+                <Text style={styles.sectionDescription}>
+                  This is elements in the scroll view
+                </Text>
+              </View>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Scrollview element</Text>
+                <Text style={styles.sectionDescription}>
+                  This is elements in the scroll view
+                </Text>
+              </View>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Scrollview element</Text>
+                <Text style={styles.sectionDescription}>
+                  This is elements in the scroll view
+                </Text>
+              </View>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Scrollview element</Text>
+                <Text style={styles.sectionDescription}>
+                  This is elements in the scroll view
+                </Text>
+              </View>
+            </ScrollView>
+            <Button>
+              <Text>sapdap</Text>
+            </Button>
+            <Switch value={on} onValueChange={toggle} />
+            <TextInput
+              autoFocus
+              style={{height: 50}}
+              placeholder="This is a text input"
+              onChangeText={() => {}}
+            />
+            <Button>
+              <Text>sapdap</Text>
+            </Button>
           </View>
         </BottomSheet>
       </SafeAreaView>
